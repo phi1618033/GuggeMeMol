@@ -1,0 +1,17 @@
+version: "3.5"
+services:
+  guggememol:
+    build: .
+    container_name: guggememol
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - OMDB_API_KEY=${OMDB_API_KEY}
+    volumes:
+      - poll-data:/app/data/polls
+
+volumes:
+  poll-data:
